@@ -1,35 +1,32 @@
 import { View, Text, ScrollView } from "react-native";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { ArrowRightIcon } from "react-native-heroicons/outline";
 import RestaurantCard from "./RestaurantCard";
+import sanityClient from "../sanity";
 
 const FeaturedRow = ({ title, description, id }) => {
-  const restaurants = [
-    {
-      id: 123,
-      imgUrl: "https://links.papareact.com/gn7",
-      title: "Sushi",
-      rating: 4,
-      genre: "female",
-      address: "123 Av Street",
-      short_description: "Sushi",
-      dishes: [],
-      long: 20,
-      lat: 0,
-    },
-    {
-      id: 1234,
-      imgUrl: "https://links.papareact.com/gn7",
-      title: "Sushi",
-      rating: 3,
-      genre: "female",
-      address: "123 Av Street",
-      short_description: "Sushi",
-      dishes: [],
-      long: 20,
-      lat: 0,
-    },
-  ];
+  const [restaurants, setRestaurant] = useState([]);
+
+  useEffect(() => {
+    sanityClient
+      .fetch(
+        `
+      *[_type == "featured" && _id == $id]{
+        ...,
+        restaurants[]->{
+          ...,
+          dishes[]->,
+          type->{ 
+            name
+          }
+        }
+      }[0]`,
+        { id }
+      )
+      .then((data) => {
+        setRestaurant(data?.restaurants);
+      });
+  }, []);
 
   return (
     <View>
@@ -46,12 +43,12 @@ const FeaturedRow = ({ title, description, id }) => {
         className="pt-4"
       >
         {/* Restaurant Card */}
-        {restaurants.map((item) => {
+        {restaurants.map((item, key) => {
           return (
             <RestaurantCard
-              id={item.id}
-              imgUrl={item.imgUrl}
-              title={item.title}
+              id={item._id}
+              imgUrl={item.image}
+              title={item.name}
               rating={item.rating}
               genre={item.genre}
               address={item.address}
@@ -59,6 +56,7 @@ const FeaturedRow = ({ title, description, id }) => {
               dishes={item.dishes}
               long={item.long}
               lat={item.lat}
+              key={key}
             />
           );
         })}

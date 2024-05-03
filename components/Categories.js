@@ -22,8 +22,10 @@ const Categories = () => {
       }}
     >
       {/* CategoryCard */}
-      {categories.map((item) => {
-        return <CategoryCard imgUrl={item.imgUrl} title={item.title} />;
+      {categories.map((item, key) => {
+        return (
+          <CategoryCard imgUrl={item.imgUrl} title={item.title} key={key} />
+        );
       })}
     </ScrollView>
   );
