@@ -2,16 +2,7 @@ import { ScrollView } from "react-native";
 import React from "react";
 import CategoryCard from "./CategoryCard";
 
-const Categories = () => {
-  const categories = [
-    { imgUrl: "https://links.papareact.com/gn7", title: "Testing 1" },
-    { imgUrl: "https://links.papareact.com/gn7", title: "Testing 2" },
-    { imgUrl: "https://links.papareact.com/gn7", title: "Testing 3" },
-    { imgUrl: "https://links.papareact.com/gn7", title: "Testing 4" },
-    { imgUrl: "https://links.papareact.com/gn7", title: "Testing 5" },
-    { imgUrl: "https://links.papareact.com/gn7", title: "Testing 6" },
-  ];
-
+const Categories = ({ categories }) => {
   return (
     <ScrollView
       horizontal
@@ -23,9 +14,7 @@ const Categories = () => {
     >
       {/* CategoryCard */}
       {categories.map((item, key) => {
-        return (
-          <CategoryCard imgUrl={item.imgUrl} title={item.title} key={key} />
-        );
+        return <CategoryCard imgUrl={item.image} title={item.name} key={key} />;
       })}
     </ScrollView>
   );

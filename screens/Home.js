@@ -21,6 +21,7 @@ import sanityClient from "../sanity";
 const Home = () => {
   const navigation = useNavigation();
   const [featuredCategories, setFeaturedCategories] = useState([]);
+  const [categories, setCategories] = useState([]);
 
   useEffect(() => {
     sanityClient
@@ -36,6 +37,18 @@ const Home = () => {
       )
       .then((data) => {
         setFeaturedCategories(data);
+      });
+  }, []);
+
+  useEffect(() => {
+    sanityClient
+      .fetch(
+        `
+          *[_type == "category"]{
+            ...}`
+      )
+      .then((data) => {
+        setCategories(data);
       });
   }, []);
 
@@ -83,7 +96,7 @@ const Home = () => {
         contentContainerStyle={{ paddingBottom: 100 }}
       >
         {/* Categories */}
-        <Categories />
+        <Categories categories={categories} />
 
         {/* FeaturedRow */}
         {featuredCategories?.map((item) => {
