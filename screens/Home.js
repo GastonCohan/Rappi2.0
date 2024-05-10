@@ -70,11 +70,11 @@ const Home = () => {
         <View className="flex-1">
           <Text className="font-bold text-grey-400 text-xs">Deliver Now!</Text>
           <Text className="font-bold text-xl">
-            Current Location <ChevronDownIcon size={20} color="#00CCBB" />
+            Current Location <ChevronDownIcon size={20} color="#F5CF8E" />
           </Text>
         </View>
 
-        <UserIcon size={35} color={"#00CCBB"} />
+        <UserIcon size={35} color={"#F5CF8E"} />
       </View>
 
       {/* Search */}
@@ -87,7 +87,7 @@ const Home = () => {
             keyboardType="default"
           />
         </View>
-        <AdjustmentsVerticalIcon color={"#00CCBB"} />
+        <AdjustmentsVerticalIcon color={"#F5CF8E"} />
       </View>
 
       {/* Body */}

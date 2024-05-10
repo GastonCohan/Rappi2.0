@@ -7,6 +7,8 @@ import Restaurant from "./screens/Restaurant";
 import { Provider } from "react-redux";
 import { store } from "./store";
 import Basket from "./screens/Basket";
+import PreparingOrderScreen from "./screens/PreparingOrderScreen";
+import Delivery from "./screens/Delivery";
 
 export default function App() {
   const Stack = createNativeStackNavigator();
@@ -21,6 +23,16 @@ export default function App() {
             component={Basket}
             name="Basket"
             options={{ presentation: "modal", headerShown: false }}
+          ></Stack.Screen>
+          <Stack.Screen
+            component={Delivery}
+            name="Delivery"
+            options={{ presentation: "fullScreenModal", headerShown: false }}
+          ></Stack.Screen>
+          <Stack.Screen
+            component={PreparingOrderScreen}
+            name="PreparingOrderScreen"
+            options={{ presentation: "fullScreenModal", headerShown: false }}
           ></Stack.Screen>
         </Stack.Navigator>
         <StatusBar style="auto" />

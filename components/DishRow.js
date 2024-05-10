@@ -65,12 +65,12 @@ const DishRow = ({ id, name, description, price, image }) => {
             >
               <MinusCircleIcon
                 size={40}
-                color={items.length === 0 ? "grey" : "#00CCBB"}
+                color={items.length === 0 ? "grey" : "#F5CF8E"}
               />
             </TouchableOpacity>
             <Text>{items.length}</Text>
             <TouchableOpacity onPress={handlePressAdd}>
-              <PlusCircleIcon color="#00CCBB" size={40} />
+              <PlusCircleIcon color="#F5CF8E" size={40} />
             </TouchableOpacity>
           </View>
         </View>

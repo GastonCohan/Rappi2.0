@@ -79,7 +79,7 @@ const Restaurant = () => {
             className="rounded-full absolute top-14 left-5 p-2 bg-gray-100"
             onPress={() => navigation.goBack()}
           >
-            <ArrowLeftIcon size={20} color="#00CCBB" />
+            <ArrowLeftIcon size={20} color="#F5CF8E" />
           </TouchableOpacity>
         </View>
 
@@ -112,7 +112,7 @@ const Restaurant = () => {
             <Text className="pl-2 flex-1 text-md font-bold">
               Have a food alergy?
             </Text>
-            <ChevronRightIcon color="#00ccbb" />
+            <ChevronRightIcon color="#F5CF8E" />
           </TouchableOpacity>
         </View>
 

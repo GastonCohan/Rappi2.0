@@ -19,8 +19,6 @@ const RestaurantCard = ({
 }) => {
   const navigation = useNavigation();
 
-  console.log(title);
-
   return (
     <TouchableOpacity
       className="bg-white mr-3 shadow"
